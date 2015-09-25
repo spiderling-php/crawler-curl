@@ -37,7 +37,9 @@ class LoaderCurl implements LoaderInterface
             CURLOPT_USERAGENT => LoaderCurl::USER_AGENT,
             CURLOPT_HEADER => true,
             CURLOPT_HTTPHEADER => array_map(
-                function($row) { return join('; ', $row); },
+                function ($row) {
+                    return join('; ', $row);
+                },
                 $request->getHeaders()
             ),
         ]);
