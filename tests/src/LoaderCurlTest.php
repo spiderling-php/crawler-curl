@@ -55,6 +55,7 @@ class LoaderCurlTest extends PHPUnit_Framework_TestCase
 
     /**
      * @covers ::send
+     * @covers ::headerRow
      * @covers ::getCurrentUri
      */
     public function testSendPost()
