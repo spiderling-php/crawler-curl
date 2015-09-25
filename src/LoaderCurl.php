@@ -21,6 +21,15 @@ class LoaderCurl implements LoaderInterface
     private $currentUri;
 
     /**
+     * @param  array  $row
+     * @return string
+     */
+    public function headerRow(array $row)
+    {
+        return join('; ', $row);
+    }
+
+    /**
      * @param  RequestInterface $request
      */
     public function send(RequestInterface $request)
@@ -29,6 +38,11 @@ class LoaderCurl implements LoaderInterface
 
         $curl = curl_init();
 
+        $headers = array_map(
+            [$this, 'headerRow'],
+            $request->getHeaders()
+        );
+
         curl_setopt_array($curl, [
             CURLOPT_URL => (string) $this->currentUri,
             CURLOPT_FOLLOWLOCATION => true,
@@ -36,15 +50,10 @@ class LoaderCurl implements LoaderInterface
             CURLOPT_CUSTOMREQUEST => $request->getMethod(),
             CURLOPT_USERAGENT => LoaderCurl::USER_AGENT,
             CURLOPT_HEADER => true,
-            CURLOPT_HTTPHEADER => array_map(
-                function ($row) {
-                    return join('; ', $row);
-                },
-                $request->getHeaders()
-            ),
+            CURLOPT_HTTPHEADER => $headers,
         ]);
 
-        if ($request->getBody()) {
+        if ($request->getBody()->getSize()) {
             curl_setopt($curl, CURLOPT_POSTFIELDS, (string) $request->getBody());
         }
 

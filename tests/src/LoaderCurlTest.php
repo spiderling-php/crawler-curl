@@ -45,6 +45,12 @@ class LoaderCurlTest extends PHPUnit_Framework_TestCase
         $this->assertEquals('test response', $response->getBody());
 
         $this->assertEquals('http://127.0.0.1:8126/', $loader->getCurrentUri());
+
+        $received = Server::received();
+
+        $this->assertEquals('GET', $received[0]->getMethod());
+        $this->assertEquals('http://127.0.0.1:8126/', $received[0]->getUri());
+        $this->assertEmpty($received[0]->getHeaderLine('Content-Type'));
     }
 
     /**
@@ -70,5 +76,19 @@ class LoaderCurlTest extends PHPUnit_Framework_TestCase
         $this->assertEquals('other response!', $response->getBody());
 
         $this->assertEquals('http://127.0.0.1:8126/', $loader->getCurrentUri());
+
+        $received = Server::received();
+
+        $this->assertEquals('POST', $received[0]->getMethod());
+        $this->assertEquals('http://127.0.0.1:8126/', $received[0]->getUri());
+        $this->assertEquals(
+            'application/x-www-form-urlencoded',
+            $received[0]->getHeaderLine('Content-Type')
+        );
+
+        $this->assertEquals(
+            'name=test&gender=female',
+            $received[0]->getBody()->getContents()
+        );
     }
 }
