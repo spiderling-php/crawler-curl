@@ -1,6 +1,6 @@
 <?php
 
-namespace SP\CrawlerCurl;
+namespace SP\Driver;
 
 use SP\Crawler\Crawler;
 use DOMDocument;
@@ -10,7 +10,7 @@ use DOMDocument;
  * @copyright 2015, Clippings Ltd.
  * @license   http://spdx.org/licenses/BSD-3-Clause
  */
-class CrawlerCurl extends Crawler
+class CurlCrawler extends Crawler
 {
     /**
      * @param DOMDocument|null $document
@@ -21,6 +21,6 @@ class CrawlerCurl extends Crawler
             $document = new DOMDocument('1.0', 'UTF-8');
         }
 
-        parent::__construct(new LoaderCurl(), $document);
+        parent::__construct(new CurlLoader(), $document);
     }
 }

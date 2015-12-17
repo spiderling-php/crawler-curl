@@ -1,17 +1,18 @@
 <?php
 
-namespace SP\CrawlerCurl;
+namespace SP\Driver;
 
 use SP\Crawler\LoaderInterface;
 use GuzzleHttp\Psr7\Uri;
 use Psr\Http\Message\RequestInterface;
+use Psr\Http\Message\UriInterface;
 
 /**
  * @author    Ivan Kerin <ikerin@gmail.com>
  * @copyright 2015, Clippings Ltd.
  * @license   http://spdx.org/licenses/BSD-3-Clause
  */
-class LoaderCurl implements LoaderInterface
+class CurlLoader implements LoaderInterface
 {
     const USER_AGENT = 'Spiderling Simple Driver';
 
@@ -19,6 +20,8 @@ class LoaderCurl implements LoaderInterface
      * @var \Psr\Http\Message\UriInterface;
      */
     private $currentUri;
+
+    private $base;
 
     /**
      * @param  array  $row
@@ -29,12 +32,31 @@ class LoaderCurl implements LoaderInterface
         return join('; ', $row);
     }
 
+    public function setBase(UriInterface $uri)
+    {
+        $base = (string) $uri->withPath('')->withQuery('')->withFragment('');
+
+        if ($base and $base !== $this->base) {
+            $this->base = $base;
+        }
+    }
+
+    public function getBase()
+    {
+        return $this->base;
+    }
+
     /**
      * @param  RequestInterface $request
      */
     public function send(RequestInterface $request)
     {
         $this->currentUri = $request->getUri();
+        $this->setBase($this->currentUri);
+
+        if (empty($this->currentUri->getHost())) {
+            $this->currentUri = new Uri($this->getBase().$this->currentUri);
+        }
 
         $curl = curl_init();
 
@@ -48,7 +70,7 @@ class LoaderCurl implements LoaderInterface
             CURLOPT_FOLLOWLOCATION => true,
             CURLOPT_RETURNTRANSFER => true,
             CURLOPT_CUSTOMREQUEST => $request->getMethod(),
-            CURLOPT_USERAGENT => LoaderCurl::USER_AGENT,
+            CURLOPT_USERAGENT => CurlLoader::USER_AGENT,
             CURLOPT_HEADER => true,
             CURLOPT_HTTPHEADER => $headers,
         ]);
@@ -58,6 +80,8 @@ class LoaderCurl implements LoaderInterface
         }
 
         $response = curl_exec($curl);
+
+        curl_error($curl);
 
         $this->currentUri = new Uri(curl_getinfo($curl, CURLINFO_EFFECTIVE_URL));
 

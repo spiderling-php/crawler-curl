@@ -1,5 +1,5 @@
 {
-    "name": "spiderling-php/crawler-curl",
+    "name": "spiderling-php/curl-driver",
     "description": "A spiderling crawler using simple curl",
     "license": "BSD-3-Clause",
     "authors": [
@@ -20,17 +20,16 @@
         "spiderling-php/spiderling": "dev-master"
     },
     "require-dev": {
-        "guzzlehttp/guzzle" : "^6.1-dev"
+        "spiderling-php/driver-test" : "dev-master"
     },
     "autoload": {
         "psr-4": {
-            "SP\\CrawlerCurl\\": "src/"
+            "SP\\Driver\\": "src/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "SP\\CrawlerCurl\\Test\\": "tests/src/",
-            "GuzzleHttp\\Tests\\": "vendor/guzzlehttp/guzzle/tests/"
+            "SP\\Driver\\Test\\": "tests/src/"
         }
     }
 }
