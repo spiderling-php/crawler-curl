@@ -120,12 +120,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/spiderling-php/crawler.git",
-                "reference": "bcc29dcdb84053b47d23a9a47233bf04441ba336"
+                "reference": "cce6a63ab11c540b2cc1611e9d119af280810cae"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spiderling-php/crawler/zipball/bcc29dcdb84053b47d23a9a47233bf04441ba336",
-                "reference": "bcc29dcdb84053b47d23a9a47233bf04441ba336",
+                "url": "https://api.github.com/repos/spiderling-php/crawler/zipball/cce6a63ab11c540b2cc1611e9d119af280810cae",
+                "reference": "cce6a63ab11c540b2cc1611e9d119af280810cae",
                 "shasum": ""
             },
             "require": {
@@ -161,7 +161,7 @@
                 "source": "https://github.com/spiderling-php/crawler/tree/master",
                 "issues": "https://github.com/spiderling-php/crawler/issues"
             },
-            "time": "2015-12-18 16:10:19"
+            "time": "2015-12-18 16:18:59"
         },
         {
             "name": "spiderling-php/spiderling",
