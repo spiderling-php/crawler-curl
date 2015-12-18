@@ -120,12 +120,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/spiderling-php/crawler.git",
-                "reference": "fa05db75959859f9036ab7721343363c8af6aa99"
+                "reference": "c9bbebdddd4a7e161135a48512ceb3b0728ea24c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spiderling-php/crawler/zipball/fa05db75959859f9036ab7721343363c8af6aa99",
-                "reference": "fa05db75959859f9036ab7721343363c8af6aa99",
+                "url": "https://api.github.com/repos/spiderling-php/crawler/zipball/c9bbebdddd4a7e161135a48512ceb3b0728ea24c",
+                "reference": "c9bbebdddd4a7e161135a48512ceb3b0728ea24c",
                 "shasum": ""
             },
             "require": {
@@ -161,7 +161,7 @@
                 "source": "https://github.com/spiderling-php/crawler/tree/master",
                 "issues": "https://github.com/spiderling-php/crawler/issues"
             },
-            "time": "2015-12-17 19:13:52"
+            "time": "2015-12-18 14:34:51"
         },
         {
             "name": "spiderling-php/spiderling",
@@ -169,12 +169,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/spiderling-php/spiderling.git",
-                "reference": "20e704f5bd0767defa663b5684051c6e26d5fc8b"
+                "reference": "9d61ac9c69cc318f3acec9159c6dace9875051b4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spiderling-php/spiderling/zipball/20e704f5bd0767defa663b5684051c6e26d5fc8b",
-                "reference": "20e704f5bd0767defa663b5684051c6e26d5fc8b",
+                "url": "https://api.github.com/repos/spiderling-php/spiderling/zipball/9d61ac9c69cc318f3acec9159c6dace9875051b4",
+                "reference": "9d61ac9c69cc318f3acec9159c6dace9875051b4",
                 "shasum": ""
             },
             "require": {
@@ -202,7 +202,7 @@
                 }
             ],
             "description": "Browser emulator, for crawling web pages",
-            "time": "2015-12-17 21:03:11"
+            "time": "2015-12-18 10:54:58"
         },
         {
             "name": "symfony/css-selector",
@@ -265,12 +265,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/spiderling-php/driver-test.git",
-                "reference": "d8008f784c93fe49fff962885954ebcf1ad27662"
+                "reference": "f8fb511ff3741f98d1e6a89a9837cc62955479e5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spiderling-php/driver-test/zipball/d8008f784c93fe49fff962885954ebcf1ad27662",
-                "reference": "d8008f784c93fe49fff962885954ebcf1ad27662",
+                "url": "https://api.github.com/repos/spiderling-php/driver-test/zipball/f8fb511ff3741f98d1e6a89a9837cc62955479e5",
+                "reference": "f8fb511ff3741f98d1e6a89a9837cc62955479e5",
                 "shasum": ""
             },
             "require": {
@@ -295,7 +295,7 @@
                 }
             ],
             "description": "Integration tests for spiderling drivers",
-            "time": "2015-12-17 21:20:41"
+            "time": "2015-12-18 14:37:09"
         },
         {
             "name": "symfony/process",

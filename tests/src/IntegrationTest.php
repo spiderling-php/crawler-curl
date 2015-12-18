@@ -7,7 +7,7 @@ use SP\Driver\CurlCrawler;
 
 /**
  * @covers SP\Driver\CurlLoader::send
- * @covers SP\Driver\CurlLoader::headerRow
+ * @covers SP\Driver\CurlLoader::getConvertedHeaders
  * @covers SP\Driver\CurlLoader::setBase
  * @covers SP\Driver\CurlLoader::getBase
  * @covers SP\Driver\CurlLoader::getCurrentUri

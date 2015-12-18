@@ -27,9 +27,15 @@ class CurlLoader implements LoaderInterface
      * @param  array  $row
      * @return string
      */
-    public function headerRow(array $row)
+    public function getConvertedHeaders(array $headers)
     {
-        return join('; ', $row);
+        $converted = [];
+
+        foreach ($headers as $name => $value) {
+            $converted []= $name.': '.join('; ', (array) $value);
+        }
+
+        return $converted;
     }
 
     public function setBase(UriInterface $uri)
@@ -60,28 +66,23 @@ class CurlLoader implements LoaderInterface
 
         $curl = curl_init();
 
-        $headers = array_map(
-            [$this, 'headerRow'],
-            $request->getHeaders()
-        );
-
-        curl_setopt_array($curl, [
+        $options = [
             CURLOPT_URL => (string) $this->currentUri,
             CURLOPT_FOLLOWLOCATION => true,
             CURLOPT_RETURNTRANSFER => true,
             CURLOPT_CUSTOMREQUEST => $request->getMethod(),
             CURLOPT_USERAGENT => CurlLoader::USER_AGENT,
             CURLOPT_HEADER => true,
-            CURLOPT_HTTPHEADER => $headers,
-        ]);
+            CURLOPT_HTTPHEADER => $this->getConvertedHeaders($request->getHeaders()),
+        ];
 
         if ($request->getBody()->getSize()) {
-            curl_setopt($curl, CURLOPT_POSTFIELDS, (string) $request->getBody());
+            $options[CURLOPT_POSTFIELDS] = (string) $request->getBody();
         }
 
-        $response = curl_exec($curl);
+        curl_setopt_array($curl, $options);
 
-        curl_error($curl);
+        $response = curl_exec($curl);
 
         $this->currentUri = new Uri(curl_getinfo($curl, CURLINFO_EFFECTIVE_URL));
 
