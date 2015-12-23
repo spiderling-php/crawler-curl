@@ -24,12 +24,12 @@
     },
     "autoload": {
         "psr-4": {
-            "SP\\Driver\\": "src/"
+            "SP\\CurlDriver\\": "src/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "SP\\Driver\\Test\\": "tests/src/"
+            "SP\\CurlDriver\\Test\\": "tests/src/"
         }
     }
 }

@@ -1,6 +1,6 @@
 <?php
 
-namespace SP\Driver;
+namespace SP\CurlDriver;
 
 use SP\Spiderling\CrawlerSession;
 
@@ -9,10 +9,10 @@ use SP\Spiderling\CrawlerSession;
  * @copyright 2015, Clippings Ltd.
  * @license   http://spdx.org/licenses/BSD-3-Clause
  */
-class CurlSession extends CrawlerSession
+class Session extends CrawlerSession
 {
-    public function __construct(CurlCrawler $crawler = null)
+    public function __construct(Crawler $crawler = null)
     {
-        parent::__construct($crawler ?: new CurlCrawler());
+        parent::__construct($crawler ?: new Crawler());
     }
 }

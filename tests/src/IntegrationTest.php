@@ -1,16 +1,12 @@
 <?php
 
-namespace SP\Driver\Test;
+namespace SP\CurlDriver\Test;
 
 use SP\DriverTest\CrawlerDriverTest;
-use SP\Driver\CurlCrawler;
+use SP\CurlDriver\Crawler;
 
 /**
- * @covers SP\Driver\CurlLoader::send
- * @covers SP\Driver\CurlLoader::getConvertedHeaders
- * @covers SP\Driver\CurlLoader::setBase
- * @covers SP\Driver\CurlLoader::getBase
- * @covers SP\Driver\CurlLoader::getCurrentUri
+ * @covers SP\CurlDriver\Loader
  */
 class IntegrationTest extends CrawlerDriverTest
 {
@@ -20,6 +16,6 @@ class IntegrationTest extends CrawlerDriverTest
 
         usleep(50000);
 
-        self::setDriver(new CurlCrawler());
+        self::setDriver(new Crawler());
     }
 }

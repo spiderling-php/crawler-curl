@@ -1,14 +1,14 @@
 <?php
 
-namespace SP\Driver\Test;
+namespace SP\CurlDriver\Test;
 
 use PHPUnit_Framework_TestCase;
-use SP\Driver\CurlSession;
+use SP\CurlDriver\Session;
 
 /**
- * @coversDefaultClass SP\Driver\CurlSession
+ * @coversDefaultClass SP\CurlDriver\Session
  */
-class CurlSessionTest extends PHPUnit_Framework_TestCase
+class SessionTest extends PHPUnit_Framework_TestCase
 {
     /**
      * @covers ::__construct
@@ -16,11 +16,11 @@ class CurlSessionTest extends PHPUnit_Framework_TestCase
     public function testConstruct()
     {
         $browser = $this
-            ->getMockBuilder('SP\Driver\CurlCrawler')
+            ->getMockBuilder('SP\CurlDriver\Crawler')
             ->disableOriginalConstructor()
             ->getMock();
 
-        $session = new CurlSession($browser);
+        $session = new Session($browser);
 
         $this->assertInstanceOf('SP\Spiderling\CrawlerInterface', $session->getCrawler());
 
@@ -32,8 +32,8 @@ class CurlSessionTest extends PHPUnit_Framework_TestCase
      */
     public function testConstructDefault()
     {
-        $session = new CurlSession();
+        $session = new Session();
 
-        $this->assertInstanceOf('SP\Driver\CurlCrawler', $session->getCrawler());
+        $this->assertInstanceOf('SP\CurlDriver\Crawler', $session->getCrawler());
     }
 }
