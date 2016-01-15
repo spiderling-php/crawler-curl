@@ -4,7 +4,7 @@ namespace SP\CurlDriver;
 
 use SP\Crawler\LoaderInterface;
 use GuzzleHttp\Psr7\Uri;
-use Psr\Http\Message\RequestInterface;
+use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Message\UriInterface;
 
 /**
@@ -53,9 +53,9 @@ class Loader implements LoaderInterface
     }
 
     /**
-     * @param  RequestInterface $request
+     * @param  ServerRequestInterface $request
      */
-    public function send(RequestInterface $request)
+    public function send(ServerRequestInterface $request)
     {
         $this->currentUri = $request->getUri();
         $this->setBase($this->currentUri);
